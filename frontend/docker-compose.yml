@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  apitest-frontend:
+    image: 'node:18'
+    ports:
+      - '${APP_PORT:-3000}:4200'
+    networks:
+      - backend_apitest-network
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    command: "npm start"
+networks:
+  backend_apitest-network:
+    external: true
